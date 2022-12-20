@@ -2,32 +2,33 @@ package com.anhan.rougle.word;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class WordHandler {
-    private WordUtil wordUtil;
+    private WordDictionary wordDictionary;
+    private Random random;
 
-    public WordHandler(WordUtil wordUtil){
-        this.wordUtil = wordUtil;
+    public WordHandler(WordDictionary wordDictionary){
+        this.wordDictionary = wordDictionary;
+        this.random = new Random();
     }
 
-    //TODO
-    public List<String> getDailyWords(){
-        ArrayList<String> words = new ArrayList();
-        return words;
+    /**
+     * Return words at index
+     * @param i index to get words at
+     * @return list of words at index i
+     */
+    public List<String> getWords(int i){
+        return this.wordDictionary.getIndex(i);
     }
 
-    //TODO
+    /**
+     * Return words at random index
+     * @return return words at random index
+     */
     public List<String> getRandomWords(){
-        ArrayList<String> words = new ArrayList();
-        return words;
-    }
-
-    //TODO
-    public List<String> getHistoricalWords(){
-        ArrayList<String> words = new ArrayList();
-        return words;
+        return getWords(this.random.nextInt(Integer.MAX_VALUE));
     }
 }

@@ -2,18 +2,22 @@ package com.anhan.rougle.powerup;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class PowerupHandler {
+    private PowerUp powerUp;
 
-    public PowerupHandler(){
+    public PowerupHandler(PowerUp powerUp){
+        this.powerUp = powerUp;
     }
 
-    //TODO
+    /**
+     * return list of i powerups
+     * @param i number of powerups to return
+     * @return list of i powerups
+     */
     public List<String> getPowerups(int i){
-        ArrayList<String> powerups = new ArrayList();
-        return powerups;
+        return this.powerUp.getPowerups(i);
     }
 }

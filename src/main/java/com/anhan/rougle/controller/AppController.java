@@ -23,9 +23,9 @@ public class AppController {
         return "Welcome to Rougle!";
     }
 
-    @GetMapping("/test")
-    public List<String> getTest() {
-//        return wordUtil.getDictionary();
-    }
+//    @GetMapping("/test")
+//    public List<String> getTest() {
+////        return wordUtil.getDictionary();
+//    }
 
 }

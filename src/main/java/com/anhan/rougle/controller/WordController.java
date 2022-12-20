@@ -1,21 +1,29 @@
 package com.anhan.rougle.controller;
 
+import com.anhan.rougle.word.WordHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("word")
 public class WordController {
+    WordHandler wordHandler;
+
+    public WordController(WordHandler wordHandler){
+        this.wordHandler = wordHandler;
+    }
 
     /***
      * Get daily words
      * @return daily word values
      */
-    @GetMapping("/daily")
-    public String getDaily() {
-        return "Daily Word List";
+    @GetMapping("/{day}")
+    public List<String> getWords(@PathVariable int day) {
+        return this.wordHandler.getWords(day);
     }
 
     /***
@@ -23,16 +31,7 @@ public class WordController {
      * @return random word values
      */
     @GetMapping("/random")
-    public String getRandom() {
-        return "Random Word List";
-    }
-
-    /***
-     * Get random words
-     * @return random word values
-     */
-    @GetMapping("/historical/{day}")
-    public String getHistorical(@PathVariable String day) {
-        return "Historical Word List from " + day;
+    public List<String> getRandom() {
+        return this.wordHandler.getRandomWords();
     }
 }
